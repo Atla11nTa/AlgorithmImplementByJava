@@ -11,7 +11,7 @@ import java.util.Arrays;
  */
 
 public class NearlySort {
-    public static int partition(int[] arr,int left,int right){
+    static int partition(int[] arr,int left,int right){
         int temp = arr[left];
         while(left<right){
             while(left<right){
