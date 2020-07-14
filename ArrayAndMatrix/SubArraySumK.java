@@ -4,7 +4,7 @@ package ArrayAndMatrix;
  * 题目：未排序正数数组中累加和为给定值的最长子数组长度
  * 思路分析：
  * left和right分别表示子数组的头和尾，sum代表子数组和，因为是正数数组，所以sum<k，说明此时right要右移，sum == k说明刚好符合，此时left右移，
- * 找一个，因为right右移的子数组是肯定大于k的。sum>k时，left右移。
+ * 找下一个，因为right右移的子数组是肯定大于k的。sum>k时，left右移。
  * 注意每次移动left和right时都要相应的加减sum.
  */
 public class SubArraySumK {

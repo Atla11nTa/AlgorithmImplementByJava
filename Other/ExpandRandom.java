@@ -1,5 +1,6 @@
 package Other;
 
+import java.util.Comparator;
 import java.util.Random;
 
 /**
