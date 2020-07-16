@@ -7,25 +7,41 @@ import java.util.*;
  * leetCode地址：https://leetcode-cn.com/problems/number-of-islands/
  * 思路分析： 每次从一个为'1'的坐标开始进行BFS，遍历所有为1的点，并且将已访问的坐标标记，完成一次BFS即遍历了一个岛屿。然后接着从未访问的为'1'
  * 的坐标开始遍历。
- * 注意点： 1. 思路是简单的广度优先遍历，但是通常在找下一个点时，会先判断，是有效点才入队，但是对周围四个点分别进行一次判断，会导致超时。
- *  解决办法是加入时不判断，把周围四个点都先加入，而在访问时判断，逻辑会有点不同。
+ * 注意点： 广度优先遍历是在加入队列时标记已访问，而不是在弹出队列时标记。
  */
 public class IslandCount {
-    public static void Bfs(char[][] gird, boolean[][] isvisited, int beginX, int beginY) {
-        Queue<int[]> queue = new LinkedList<>();
-        queue.add(new int[]{beginX, beginY});
-        int x = 0, y = 0;
+    public static void isCan(char[][] gird, boolean[][] isVisited, Queue<Integer[]> queue, int x, int y) {
+        //超过边界
+        if (x < 0 || x >= gird.length || y < 0 || y >= gird[0].length) {
+            return;
+        }
+        //是水
+        if (gird[x][y] == '0') {
+            return;
+        }
+        // 已在集中
+        if (isVisited[x][y]) {
+            return;
+        }
+        queue.offer(new Integer[]{x, y});
+        isVisited[x][y] = true;
+    }
+
+    public static void Bfs(char[][] gird, boolean[][] isVisited, int beginX, int beginY) {
+        Queue<Integer[]> queue = new LinkedList<>();
+        Integer[] beginCor = new Integer[]{beginX, beginY};
+        queue.offer(beginCor);
+        isVisited[beginX][beginY] = true;
         while (!queue.isEmpty()) {
-            int[] curCord = queue.poll();
-            x = curCord[0];
-            y = curCord[1];
-            if (x >= 0 && x < gird.length && y >= 0 && y < gird[0].length && gird[x][y] == '1' && !isvisited[x][y]) {
-                isvisited[x][y] = true;
-                queue.offer(new int[]{x - 1, y});
-                queue.offer(new int[]{x + 1, y});
-                queue.offer(new int[]{x, y + 1});
-                queue.offer(new int[]{x, y - 1});
-            }
+            Integer[] curCord = queue.poll();
+            //上一个点
+            isCan(gird, isVisited, queue, curCord[0] - 1, curCord[1]);
+            //下一个点
+            isCan(gird, isVisited, queue, curCord[0] + 1, curCord[1]);
+            //左一个点
+            isCan(gird, isVisited, queue, curCord[0], curCord[1] - 1);
+            //右一个点
+            isCan(gird, isVisited, queue, curCord[0], curCord[1] + 1);
         }
     }
     public static int solution(char[][] gird) {
