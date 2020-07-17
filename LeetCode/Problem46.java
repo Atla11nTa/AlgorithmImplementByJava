@@ -33,10 +33,11 @@ public class Problem46 {
         }
         permute(num, res, 0);
         return res;
+
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 1, 2};
+        int[] nums = new int[]{1, 2, 3};
         System.out.println(solution(nums));
     }
 }
