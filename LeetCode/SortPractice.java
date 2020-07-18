@@ -92,10 +92,57 @@ public class SortPractice {
             }
         }
     }
+
+    // 归并排序, 拆分合并的过程,
+    static class MergeSort{
+        static void mergeSort(int[] nums, int left, int right) {
+            if (left >= right) {
+                return;
+            }
+            int mid = (left + right) / 2;
+            //排序左部分
+            mergeSort(nums, left, mid);
+            //排序右部分
+            mergeSort(nums, mid + 1, right);
+            //合并
+            merge(nums, left, mid, mid + 1, right);
+        }
+
+        // 合并两个有序数组, System.arraycopy()用法
+        static void merge(int[] nums, int leftBegin, int leftEnd, int rightBegin, int rightEnd) {
+            int begin = leftBegin;
+            int[] newNums = new int[leftEnd - leftBegin + rightEnd - rightBegin + 2];
+            int index = 0;
+            while (leftBegin <= leftEnd && rightBegin <= rightEnd) {
+                if (nums[leftBegin] < nums[rightBegin]) {
+                    newNums[index] = nums[leftBegin++];
+                } else {
+                    newNums[index] = nums[rightBegin++];
+                }
+                index++;
+            }
+            while (leftBegin <= leftEnd) {
+                newNums[index++] = nums[leftBegin++];
+            }
+            while ((rightBegin <= rightEnd)) {
+                newNums[index++] = nums[rightBegin++];
+            }
+            /**
+             * args1: 源数组
+             * args2: 起点
+             * args3: 目的数组
+             * args4: 复制长度.
+             */
+            System.arraycopy(newNums, 0, nums, begin, newNums.length);
+
+        }
+    }
     public static void main(String[] args) {
         int[] nums = new int[]{-1, 2, 1, 3, 1, 9, 7};
 //        QuickSort.sort(nums);
-        HeapSort.sort(nums);
+//        HeapSort.sort(nums);
+        MergeSort.mergeSort(nums, 0, nums.length - 1);
+
         System.out.println(Arrays.toString(nums));
     }
 }
