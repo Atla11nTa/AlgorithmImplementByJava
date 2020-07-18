@@ -68,7 +68,7 @@ public class HeapSort {
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{1,3,5,4,6};
+        int[] arr = new int[]{1,3,5,4,6,2};
         Heap heap = new Heap(arr);
         System.out.println(Arrays.toString(arr));
         heap.Sort();
