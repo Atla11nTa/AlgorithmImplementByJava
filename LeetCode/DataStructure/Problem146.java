@@ -1,6 +1,13 @@
-package LeetCode;
+package LeetCode.DataStructure;
 
 import java.util.HashMap;
+
+/**
+ * 题目： 146.LRU缓存
+ * 特点：当容量达到上限时，删除最近最久未访问(访问包括读取和更新)的数据
+ * 数据结构设计： 双向链表和哈希表
+ * 技巧：1. 为了方便链表操作，使用两个空的头尾节点，每次新元素插在tail前，删除就删除head的下一个。头尾永远不变。
+ */
 
 public class Problem146 {
     private HashMap<Integer, Node> hashMap;
@@ -40,9 +47,9 @@ public class Problem146 {
         if (capacity == 0) {
             return;
         }
-        //如果已经有了.
-        if (hashMap.containsKey(key)) {
-            Node node = hashMap.get(key);
+        //如果已经有了，就移到尾部，记得更新哈希表中的值
+        Node node = hashMap.get(key);
+        if (node != null) {
             node.value = value;
             hashMap.put(key, node);
             Node pre = node.pre;
