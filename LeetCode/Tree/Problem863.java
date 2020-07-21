@@ -9,17 +9,18 @@ import java.util.*;
  * 广度优先遍历： toVisit: 保存本层剩余打印的节点数。toVisit为0时，一层打印完，路径长度+1。
  *              nextLevel：保存下一层的节点数，
  */
-public class Problem {
+ class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x) {
+        val = x;
+    }
+}
+public class Problem863 {
     // 保存每个节点的父节点。
     Map<TreeNode, TreeNode> parentMap = new HashMap<>();
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) {
-            val = x;
-        }
-    }
+
 
     private void traverse(TreeNode node, TreeNode parent) {
         if (node != null) {
