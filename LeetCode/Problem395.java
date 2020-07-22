@@ -1,13 +1,13 @@
-package LeetCode.DP;
+package LeetCode;
 
 /**
  * 题目: 395.至少有K个重复字符的最长子串
  * 思路:
  * 1. 先统计字符频数, 如果最低频数大于等于k,说明整个字符串都符合要求,返回其长度.
- * 2. 如果最低频数小于k, 那么以该字符作为划分点,划分整个字符串, 因为包含该字符的子串肯定不可能是符合要求的.
+ * 2. 如果最低频数小于k, 那么以该字符作为划分点,划分整个字符串, 因为包含该字符的子串肯定不可能是符合要求的. （更好的就统计所有频数小于k的字符，更多的划分）
  * 3. 分别在其子串中找符合要求的最长子串. 最大值是结果.
  */
-public class Problem {
+public class Problem395 {
     public int longestSubstring(String s, int k) {
         // 先统计词频
         int[] hashmap = new int[128];
@@ -45,10 +45,5 @@ public class Problem {
             }
         }
         return res;
-    }
-
-    public static void main(String[] args) {
-        Problem p = new Problem();
-        System.out.print(p.longestSubstring("aacbbbdc", 2));
     }
 }
