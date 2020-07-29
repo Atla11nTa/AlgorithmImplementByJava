@@ -3,6 +3,7 @@ package LeetCode;
 import java.util.Arrays;
 
 public class SortPractice {
+    // 快速排序
     static class QuickSort {
         static void patition(int[] nums, int begin, int end) {
             if (begin < end) {
@@ -40,6 +41,7 @@ public class SortPractice {
         }
     }
 
+    // 堆排序
     static class HeapSort {
         static void bottomToUp(int[] nums, int index) {
             int father;
@@ -137,12 +139,49 @@ public class SortPractice {
 
         }
     }
+
+    // 插入排序
+    static class InsertSort{
+        public static void sort(int[] nums) {
+            int len = nums.length;
+            int j;
+            int temp;
+            for (int i = 1; i < len; i++) {
+                j = i - 1;
+                temp = nums[i];
+                // 退出循环时,j位置是小于等于temp的, 所以插入j+1
+                while (j >= 0 && nums[j] > temp) {
+                    nums[j + 1] = nums[j];
+                    j--;
+                }
+                nums[j + 1] = temp;
+            }
+        }
+    }
+
+    // 冒泡排序
+    static class ChangeSort{
+        public static void sort(int[] nums) {
+            int len = nums.length;
+            int temp;
+            for (int i = 1; i < len; i++) {
+                for (int j = 0; j <= len - i; j++) {
+                    if (nums[j] < nums[j + 1]) {
+                        temp = nums[j];
+                        nums[j] = nums[j + 1];
+                        nums[j + 1] = temp;
+                    }
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
         int[] nums = new int[]{-1, 2, 1, 3, 1, 9, 7};
 //        QuickSort.sort(nums);
 //        HeapSort.sort(nums);
-        MergeSort.mergeSort(nums, 0, nums.length - 1);
-
+//        MergeSort.mergeSort(nums, 0, nums.length - 1);
+        InsertSort.sort(nums);
         System.out.println(Arrays.toString(nums));
     }
 }
