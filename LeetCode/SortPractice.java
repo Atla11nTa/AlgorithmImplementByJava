@@ -19,7 +19,6 @@ public class SortPractice {
                             break;
                         }
                     }
-//                    left++;
                     while (left < right) {
                         if (nums[left] < tar) {
                             left++;
@@ -28,7 +27,6 @@ public class SortPractice {
                             break;
                         }
                     }
-//                    right--;
                 }
                 nums[left] = tar;
                 patition(nums, begin, left - 1);
@@ -176,12 +174,38 @@ public class SortPractice {
         }
     }
 
+    // 以数字k进行排序
+    static class Partition{
+        public static void sort(int[] nums, int k) {
+            int left = -1;
+            int right = nums.length;
+            int len = nums.length;
+            int index = 0;
+            while (index < right) {
+                if (nums[index] < k) {
+                    swap(nums, index++, ++left);
+                } else if (nums[index] > k) {
+                    swap(nums, index, --right);
+                } else {
+                    index++;
+                }
+            }
+        }
+
+        private static void swap(int[] nums, int i, int j) {
+            int temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+        }
+    }
+
     public static void main(String[] args) {
         int[] nums = new int[]{-1, 2, 1, 3, 1, 9, 7};
 //        QuickSort.sort(nums);
 //        HeapSort.sort(nums);
 //        MergeSort.mergeSort(nums, 0, nums.length - 1);
-        InsertSort.sort(nums);
+//        InsertSort.sort(nums);
+        Partition.sort(nums, 2);
         System.out.println(Arrays.toString(nums));
     }
 }

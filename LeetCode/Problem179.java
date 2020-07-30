@@ -7,7 +7,7 @@ import java.util.Arrays;
  * 思路： 转成字符串排序即可
  */
 
-public class Problem {
+public class Problem179 {
     public String largestNumber(int[] nums) {
         int len = nums.length;
         String[] strings = new String[len];
