@@ -34,7 +34,7 @@ public class H_Problem_207 {
             int cur = queue.poll();
             // 删除一个节点
             numCourses--;
-            // 遍历后继节点, 后继节点的入度--, 若入度为0, 加入queue
+            // 删除当前节点， 遍历后继节点, 后继节点的入度--, 若入度为0, 加入queue
             for (int next : adjacency.get(cur)) {
                 if (--indegrees[next] == 0) queue.add(next);
             }
