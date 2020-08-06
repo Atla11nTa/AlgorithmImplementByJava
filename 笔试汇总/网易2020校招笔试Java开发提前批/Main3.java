@@ -1,4 +1,4 @@
-package 笔试汇总.网易2020校招笔试Java开发;
+package 笔试汇总.网易2020校招笔试Java开发提前批;
 
 import java.util.Scanner;
 
