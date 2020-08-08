@@ -1,4 +1,4 @@
-package 笔试汇总.网易2020开发岗提前批;
+package 笔试练习汇总.网易2020开发岗提前批;
 
 import java.util.*;
 

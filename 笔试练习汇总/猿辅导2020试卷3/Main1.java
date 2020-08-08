@@ -1,4 +1,4 @@
-package 笔试汇总.猿辅导2020试卷3;
+package 笔试练习汇总.猿辅导2020试卷3;
 
 import java.util.*;
 

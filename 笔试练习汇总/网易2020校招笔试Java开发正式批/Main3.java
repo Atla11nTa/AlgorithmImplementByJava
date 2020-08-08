@@ -1,4 +1,4 @@
-package 笔试汇总.网易2020校招笔试Java开发正式批;
+package 笔试练习汇总.网易2020校招笔试Java开发正式批;
 
 import java.util.*;
 
