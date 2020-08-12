@@ -1,6 +1,12 @@
 package 笔试汇总.猿辅导2020试卷3;
 
+import javax.swing.*;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Main1 {
     static class banji{
@@ -19,6 +25,10 @@ public class Main1 {
     }
 
     public static void main(String[] args) {
+
+        AtomicReference<Thread> owner = new AtomicReference<>();
+        owner.compareAndSet(null, Thread.currentThread());
+
         Scanner in = new Scanner(System.in);
         // 记录数
         int N = in.nextInt();
