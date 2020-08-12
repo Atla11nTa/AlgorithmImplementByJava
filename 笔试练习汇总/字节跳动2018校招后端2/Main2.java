@@ -1,4 +1,4 @@
-package 笔试汇总.字节跳动2018校招后端2;
+package 笔试练习汇总.字节跳动2018校招后端2;
 
 import java.util.Scanner;
 
