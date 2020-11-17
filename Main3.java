@@ -1,5 +1,3 @@
-import javafx.scene.control.skin.SliderSkin;
-
 import java.util.*;
 
 public class Main3 {
